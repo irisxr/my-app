@@ -17,6 +17,13 @@
     :on-change="handleChange"
     >
     </props>
+
+    <Event
+    :name="name"
+    @change="handleEventChange"
+    >
+
+    </Event>
   </div>
 </template>
 
@@ -24,13 +31,15 @@
 
 import todoItem from './components/todoItem.vue'
 import props from './components/props.vue'
+import Event from './components/Event.vue'
 export default {
   name: 'app',
     data(){
       return{
           info:'',
           list:[],
-          type:'success'
+          type:'success',
+          name:''
 
       }
     },
@@ -41,12 +50,16 @@ export default {
         },
         handleChange(val){
             this.type=val;
+        },
+        handleEventChange(val){
+            this.name = val
         }
     },
 
   components: {
     todoItem,
       props,
+      Event
   }
 }
 </script>
