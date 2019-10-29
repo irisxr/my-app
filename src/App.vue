@@ -24,6 +24,12 @@
     >
 
     </Event>
+
+    <slot-test>
+      <template v-slot:item="test">
+        <p>{{test}}</p>
+      </template>
+    </slot-test>
   </div>
 </template>
 
@@ -32,6 +38,7 @@
 import todoItem from './components/todoItem.vue'
 import props from './components/props.vue'
 import Event from './components/Event.vue'
+import slotTest from './components/slotTest.vue'
 export default {
   name: 'app',
     data(){
@@ -59,7 +66,8 @@ export default {
   components: {
     todoItem,
       props,
-      Event
+      Event,
+      slotTest
   }
 }
 </script>
