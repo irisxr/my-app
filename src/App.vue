@@ -1,75 +1,103 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <div id="app">
-    <input type="text" v-model="info">
-    <button @click="addToDoItem()">addItem</button>
-    <ul>
-      <todo-item v-for="item in list">
-        <template v-slot:item="itemProps">
-          <span :style="{fontSize: '30px',color:itemProps.checked ?'red':'blue'}">{{item}}</span>
-        </template>
-      </todo-item>
-    </ul>
+    <div id="app">
+        <input type="text" v-model="info">
+        <button @click="addToDoItem()">addItem</button>
+        <ul>
+            <todo-item v-for="item in list" :item='item'>
+                <template v-slot:item="itemProps">
+                    <span :style="{fontSize: '30px',color:itemProps.checked ?'red':'blue'}">{{item}}</span>
+                </template>
+            </todo-item>
+        </ul>
 
-    <props
-    name="Hello Iris"
-    :isVisible="true"
-    :type="type"
-    :on-change="handleChange"
-    >
-    </props>
+        <props
+                name="Hello Iris"
+                :isVisible="true"
+                :type="type"
+                :on-change="handleChange"
+        >
+        </props>
 
-    <Event
-    :name="name"
-    @change="handleEventChange"
-    >
+        <Event
+                :name="name"
+                @change="handleEventChange"
+        >
 
-    </Event>
+        </Event>
 
-    <slot-test>
-      <template v-slot:item="test">
-        <p>{{test}}</p>
-      </template>
-    </slot-test>
-  </div>
+        <slot-test>
+            <template v-slot:item="test">
+                <p>{{test}}</p>
+            </template>
+        </slot-test>
+
+        <!--<data-flume v-model="personInfo" :zip-code.sync="zipCode"-->
+        <!--&gt;</data-flume>-->
+        <data-flume
+                :person-info="personInfo"
+                :zip-code="zipCode"
+                @change="handlePersonInfo"
+                @update:zipCode="handleZipCodeForChild"
+        >
+        </data-flume>
+        personInfo:{{personInfo}}<br/>
+        zipCode:{{zipCode}}
+    </div>
+
+
 </template>
 
 <script>
 
-import todoItem from './components/todoItem.vue'
-import props from './components/props.vue'
-import Event from './components/Event.vue'
-import slotTest from './components/slotTest.vue'
-export default {
-  name: 'app',
-    data(){
-      return{
-          info:'',
-          list:[],
-          type:'success',
-          name:''
+    import todoItem from './components/todoItem.vue'
+    import props from './components/props.vue'
+    import Event from './components/Event.vue'
+    import slotTest from './components/slotTest.vue'
+    import dataFlume from './components/dataFlume.vue'
 
-      }
-    },
-    methods:{
-        addToDoItem(){
-            this.list.push(this.info);
-            this.info=''
+    export default {
+        name: 'app',
+        data() {
+            return {
+                info: '',
+                list: [],
+                type: 'success',
+                name: '',
+                personInfo: {
+                    areaCode: '+86',
+                    phoneNum: ''
+                },
+                zipCode: ''
+
+            }
         },
-        handleChange(val){
-            this.type=val;
+        methods: {
+            addToDoItem() {
+                this.list.push(this.info);
+                this.info = ''
+            },
+            handleChange(val) {
+                this.type = val;
+            },
+            handleEventChange(val) {
+                this.name = val
+            },
+            handlePersonInfo(val) {
+                this.personInfo = val
+            },
+            handleZipCodeForChild(val) {
+                this.zipCode = val
+            }
         },
-        handleEventChange(val){
-            this.name = val
+
+        components: {
+            todoItem,
+            props,
+            Event,
+            slotTest,
+            dataFlume
         }
-    },
-
-  components: {
-    todoItem,
-      props,
-      Event,
-      slotTest
-  }
-}
+    }
 </script>
 
 <style>
