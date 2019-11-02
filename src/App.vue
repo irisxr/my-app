@@ -54,6 +54,9 @@
         </update-dom>
         <!--计算属性-->
         <Computed/>
+        <Computed1/>
+        <!--侦听器watch-->
+        <Watch/>
     </div>
 
 
@@ -68,6 +71,8 @@
     import dataFlume from './components/dataFlume.vue'
     import updateDom from './components/updateDom.vue'
     import Computed from './components/Computed.vue'
+    import Computed1 from  './components/Computed1.vue'
+    import Watch from  './components/Watch.vue'
 
     export default {
         name: 'app',
@@ -125,7 +130,9 @@
             slotTest,
             dataFlume,
             updateDom,
-            Computed
+            Computed,
+            Computed1,
+            Watch
         }
     }
 </script>
