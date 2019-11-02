@@ -3,11 +3,11 @@
         <input type="text" v-model="info">
         <button @click="addToDoItem()">addItem</button>
         <!--<ul>-->
-            <!--<todo-item v-for="item in list" :item='item'>-->
-                <!--<template v-slot:item="itemProps">-->
-                    <!--<span :style="{fontSize: '30px',color:itemProps.checked ?'red':'blue'}">{{item}}</span>-->
-                <!--</template>-->
-            <!--</todo-item>-->
+        <!--<todo-item v-for="item in list" :item='item'>-->
+        <!--<template v-slot:item="itemProps">-->
+        <!--<span :style="{fontSize: '30px',color:itemProps.checked ?'red':'blue'}">{{item}}</span>-->
+        <!--</template>-->
+        <!--</todo-item>-->
         <!--</ul>-->
 
         <props
@@ -43,14 +43,17 @@
         personInfo:{{personInfo}}<br/>
         zipCode:{{zipCode}}
         <br/>
-            <button @click="handleName">change this.name</button>
-            <button @click="handleInfo">change this.info</button>
-            <button @click="handleList">change this.list</button>
-            <update-dom
-            :customName="customName"
-            :customInfo="customInfo"
-            :customList="customList">
-            </update-dom>
+        <!--dom更新-->
+        <button @click="handleName">change this.name</button>
+        <button @click="handleInfo">change this.info</button>
+        <button @click="handleList">change this.list</button>
+        <update-dom
+                :customName="customName"
+                :customInfo="customInfo"
+                :customList="customList">
+        </update-dom>
+        <!--计算属性-->
+        <Computed/>
     </div>
 
 
@@ -64,6 +67,7 @@
     import slotTest from './components/slotTest.vue'
     import dataFlume from './components/dataFlume.vue'
     import updateDom from './components/updateDom.vue'
+    import Computed from './components/Computed.vue'
 
     export default {
         name: 'app',
@@ -78,11 +82,11 @@
                     phoneNum: ''
                 },
                 zipCode: '',
-                customName:'',
-                customInfo:{
-                    number:0
+                customName: '',
+                customInfo: {
+                    number: 0
                 },
-                customList:[]
+                customList: []
 
             }
         },
@@ -103,14 +107,14 @@
             handleZipCodeForChild(val) {
                 this.zipCode = val
             },
-            handleName(){
+            handleName() {
                 this.customName = 'world'
             },
-            handleInfo(){
-                this.customInfo.number +=1
+            handleInfo() {
+                this.customInfo.number += 1
             },
-            handleList(){
-                this.customList.push(1,2,3)
+            handleList() {
+                this.customList.push(1, 2, 3)
             }
         },
 
@@ -120,7 +124,8 @@
             Event,
             slotTest,
             dataFlume,
-            updateDom
+            updateDom,
+            Computed
         }
     }
 </script>
