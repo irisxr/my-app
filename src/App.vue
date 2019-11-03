@@ -57,6 +57,8 @@
         <Computed1/>
         <!--侦听器watch-->
         <Watch/>
+        <!--指令-->
+        <direct/>
     </div>
 
 
@@ -73,6 +75,7 @@
     import Computed from './components/Computed.vue'
     import Computed1 from  './components/Computed1.vue'
     import Watch from  './components/Watch.vue'
+    import direct from './components/direct.vue'
 
     export default {
         name: 'app',
@@ -132,7 +135,8 @@
             updateDom,
             Computed,
             Computed1,
-            Watch
+            Watch,
+            direct
         }
     }
 </script>
