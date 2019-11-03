@@ -59,6 +59,8 @@
         <Watch/>
         <!--指令-->
         <direct/>
+        <!--自定义指令-->
+        <custom-directive/>
     </div>
 
 
@@ -76,6 +78,7 @@
     import Computed1 from  './components/Computed1.vue'
     import Watch from  './components/Watch.vue'
     import direct from './components/direct.vue'
+    import customDirective from './components/customDirective.vue'
 
     export default {
         name: 'app',
@@ -136,7 +139,8 @@
             Computed,
             Computed1,
             Watch,
-            direct
+            direct,
+            customDirective
         }
     }
 </script>
