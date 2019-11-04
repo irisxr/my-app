@@ -61,6 +61,7 @@
         <direct/>
         <!--自定义指令-->
         <custom-directive/>
+        <children-a/>
     </div>
 
 
@@ -79,6 +80,7 @@
     import Watch from  './components/Watch.vue'
     import direct from './components/direct.vue'
     import customDirective from './components/customDirective.vue'
+    import childrenA from './components/childrenA.vue'
 
     export default {
         name: 'app',
@@ -140,7 +142,8 @@
             Computed1,
             Watch,
             direct,
-            customDirective
+            customDirective,
+            childrenA
         }
     }
 </script>
