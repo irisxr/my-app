@@ -1,16 +1,14 @@
 <template>
     <div class="border2">
-        <h3 >F结点</h3>
+        <h3 :style="{color:theme1.color}">F结点</h3>
     </div>
 </template>
 <script>
-    export default{
-        inject(){
-            return{
-                theme1:{
-                    from:'theme',
-                    default:()=>({})
-                }
+    export default {
+        inject: {
+            theme1: {
+                from: 'theme',
+                default: () => ({})
             }
         }
     }

@@ -1,6 +1,7 @@
 <template>
     <div class="border">
         <h1>A结点</h1>
+        <button @click="()=>changeColor()">change color</button>
         <children-b/>
         <children-c/>
     </div>
@@ -8,20 +9,31 @@
 <script>
     import childrenB from './childrenB'
     import childrenC from './childrenC'
+
     export default {
         provide() {
             return {
-                theme:this
+                theme: this
+            }
+
+        },
+        data() {
+            return {
+                color: 'blue'
             }
         },
-        data(){
-            return{
-                color:'blue'
-            }
-        },
-        components:{
+        components: {
             childrenB,
-            childrenC
+            childrenC,
+        },
+        methods: {
+            changeColor(color) {
+                if (color) {
+                    this.color = color
+                } else {
+                    this.color = this.color == 'blue' ? 'red' : 'blue'
+                }
+            }
         }
     }
 </script>
