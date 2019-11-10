@@ -1,5 +1,13 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div id="app">
+        <!--vuex-->
+        {{count}}
+        <!--getters-->
+        {{$store.getters.doubleCount}}
+        <button @click="$store.commit('increment')">count++</button>
+        <!--actions-->
+        <button @click="$store.dispatch('increment')">count++</button>
+        <br/>
         <input type="text" v-model="info">
         <button @click="addToDoItem()">addItem</button>
         <!--<ul>-->
@@ -76,8 +84,8 @@
     import dataFlume from './components/dataFlume.vue'
     import updateDom from './components/updateDom.vue'
     import Computed from './components/Computed.vue'
-    import Computed1 from  './components/Computed1.vue'
-    import Watch from  './components/Watch.vue'
+    import Computed1 from './components/Computed1.vue'
+    import Watch from './components/Watch.vue'
     import direct from './components/direct.vue'
     import customDirective from './components/customDirective.vue'
     import childrenA from './components/childrenA.vue'
@@ -144,6 +152,11 @@
             direct,
             customDirective,
             childrenA
+        },
+        computed: {
+            count() {
+                return this.$store.state.count;
+            }
         }
     }
 </script>
